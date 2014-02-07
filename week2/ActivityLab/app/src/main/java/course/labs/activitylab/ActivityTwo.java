@@ -25,11 +25,19 @@ public class ActivityTwo extends Activity {
 	// onResume(), called mCreate, etc.
 	// You will need to increment these variables' values when their
 	// corresponding lifecycle methods get called
+    private int m_createCounter;
+    private int m_restartCounter;
+    private int m_startCounter;
+    private int m_resumeCounter;
 
 
 
 	// TODO: Create variables for each of the TextViews, called
         // mTvCreate, etc. 
+    TextView m_createLabel;
+    TextView m_restartLabel;
+    TextView m_resumeLabel;
+    TextView m_startLabel;
 
 
 	@Override
@@ -40,7 +48,10 @@ public class ActivityTwo extends Activity {
 		// TODO: Assign the appropriate TextViews to the TextView variables
 		// Hint: Access the TextView by calling Activity's findViewById()
 		// textView1 = (TextView) findViewById(R.id.textView1);
-
+        m_createLabel = (TextView) findViewById( R.id.create );
+        m_restartLabel = (TextView) findViewById( R.id.restart );
+        m_resumeLabel = (TextView) findViewById( R.id.resume );
+        m_startLabel = (TextView) findViewById( R.id.start );
 
 
 
@@ -54,7 +65,7 @@ public class ActivityTwo extends Activity {
 				// TODO:
 				// This function closes Activity Two
 				// Hint: use Context's finish() method
-
+            ActivityTwo.this.finish();
 
 			
 			}
@@ -177,10 +188,10 @@ public class ActivityTwo extends Activity {
 	// Updates the displayed counters
 	public void displayCounts() {
 
-		mTvCreate.setText("onCreate() calls: " + mCreate);
-		mTvStart.setText("onStart() calls: " + mStart);
-		mTvResume.setText("onResume() calls: " + mResume);
-		mTvRestart.setText("onRestart() calls: " + mRestart);
+        m_createLabel.setText("onCreate() calls: " + m_createCounter);
+        m_startLabel.setText("onStart() calls: " + m_startLabel);
+        m_resumeLabel.setText("onResume() calls: " + m_resumeLabel);
+        m_restartLabel.setText("onRestart() calls: " + m_restartLabel);
 	
 	}
 }
