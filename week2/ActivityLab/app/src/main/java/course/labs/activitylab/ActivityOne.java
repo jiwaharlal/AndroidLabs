@@ -170,21 +170,15 @@ public class ActivityOne extends Activity {
 		// TODO:
 		// Save state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
-
-
-
-
-
-
 	}
 	
 	// Updates the displayed counters
 	public void displayCounts() {
 
 		m_createLabel.setText("onCreate() calls: " + m_createCounter);
-		m_startLabel.setText("onStart() calls: " + m_startLabel);
-		m_resumeLabel.setText("onResume() calls: " + m_resumeLabel);
-		m_restartLabel.setText("onRestart() calls: " + m_restartLabel);
+		m_startLabel.setText("onStart() calls: " + m_startCounter);
+		m_resumeLabel.setText("onResume() calls: " + m_resumeCounter);
+		m_restartLabel.setText("onRestart() calls: " + m_restartCounter);
 	
 	}
 }

@@ -89,10 +89,8 @@ public class ActivityTwo extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface via the displayCounts() method
-
-
-
-
+        m_createCounter++;
+        displayCounts();
 	}
 
 	// Lifecycle callback methods overrides
@@ -107,9 +105,8 @@ public class ActivityTwo extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
+        m_startCounter++;
+        displayCounts();
 	}
 
 	@Override
@@ -122,10 +119,8 @@ public class ActivityTwo extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
-
+        m_resumeCounter++;
+        displayCounts();
 	}
 
 	@Override
@@ -158,9 +153,8 @@ public class ActivityTwo extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
+        m_restartCounter++;
+        displayCounts();
 	}
 
 	@Override
@@ -189,9 +183,9 @@ public class ActivityTwo extends Activity {
 	public void displayCounts() {
 
         m_createLabel.setText("onCreate() calls: " + m_createCounter);
-        m_startLabel.setText("onStart() calls: " + m_startLabel);
-        m_resumeLabel.setText("onResume() calls: " + m_resumeLabel);
-        m_restartLabel.setText("onRestart() calls: " + m_restartLabel);
+        m_startLabel.setText("onStart() calls: " + m_startCounter);
+        m_resumeLabel.setText("onResume() calls: " + m_resumeCounter);
+        m_restartLabel.setText("onRestart() calls: " + m_restartCounter);
 	
 	}
 }
