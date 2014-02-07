@@ -26,7 +26,10 @@ public class ActivityOne extends Activity {
 	// onResume(), called mCreate, etc.
 	// You will need to increment these variables' values when their
 	// corresponding lifecycle methods get called
-
+    private int m_createCounter;
+    private int m_restartCounter;
+    private int m_startCounter;
+    private int m_resumeCounter;
 
 
 	// TODO: Create variables for each of the TextViews, called
