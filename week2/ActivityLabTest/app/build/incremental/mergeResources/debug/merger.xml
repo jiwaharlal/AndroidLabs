@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/home/maxim/projects/coursera/android/AndroidLabs/week2/ActivityLabTest/app/src/main/res" />
+        <source path="/home/maxim/projects/coursera/android/AndroidLabs/week2/ActivityLabTest/app/build/res/rs/debug" />
+        <source path="/home/maxim/projects/coursera/android/AndroidLabs/week2/ActivityLabTest/app/build/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/home/maxim/projects/coursera/android/AndroidLabs/week2/ActivityLabTest/app/src/debug/res" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,230 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* app/
+* app/build.gradle
+* app/src/
+* app/src/main/
+* app/src/main/AndroidManifest.xml
+* app/src/main/java/
+* app/src/main/java/.DS_Store
+* app/src/main/java/.gradle/
+* app/src/main/java/.gradle/1.9/
+* app/src/main/java/.gradle/1.9/taskArtifacts/
+* app/src/main/java/.gradle/1.9/taskArtifacts/cache.properties
+* app/src/main/java/.gradle/1.9/taskArtifacts/cache.properties.lock
+* app/src/main/java/.gradle/1.9/taskArtifacts/fileHashes.bin
+* app/src/main/java/.gradle/1.9/taskArtifacts/fileSnapshots.bin
+* app/src/main/java/.gradle/1.9/taskArtifacts/outputFileStates.bin
+* app/src/main/java/.gradle/1.9/taskArtifacts/taskArtifacts.bin
+* app/src/main/java/.idea/
+* app/src/main/java/.idea/.name
+* app/src/main/java/.idea/compiler.xml
+* app/src/main/java/.idea/copyright/
+* app/src/main/java/.idea/copyright/profiles_settings.xml
+* app/src/main/java/.idea/encodings.xml
+* app/src/main/java/.idea/gradle.xml
+* app/src/main/java/.idea/misc.xml
+* app/src/main/java/.idea/modules.xml
+* app/src/main/java/.idea/scopes/
+* app/src/main/java/.idea/scopes/scope_settings.xml
+* app/src/main/java/.idea/vcs.xml
+* app/src/main/java/.idea/workspace.xml
+* app/src/main/java/ActivityLab.iml
+* app/src/main/java/app/
+* app/src/main/java/app/app.iml
+* app/src/main/java/app/build.gradle
+* app/src/main/java/app/build/
+* app/src/main/java/app/build/apk/
+* app/src/main/java/app/build/apk/app-debug-unaligned.apk
+* app/src/main/java/app/build/classes/
+* app/src/main/java/app/build/classes/debug/
+* app/src/main/java/app/build/classes/debug/course/
+* app/src/main/java/app/build/classes/debug/course/labs/
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/ActivityOne$1.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/ActivityOne.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/ActivityTwo$1.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/ActivityTwo.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/BuildConfig.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$attr.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$drawable.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$id.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$layout.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$string.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R$style.class
+* app/src/main/java/app/build/classes/debug/course/labs/activitylab/R.class
+* app/src/main/java/app/build/incremental/
+* app/src/main/java/app/build/incremental/aidl/
+* app/src/main/java/app/build/incremental/aidl/debug/
+* app/src/main/java/app/build/incremental/aidl/debug/dependency.store
+* app/src/main/java/app/build/incremental/mergeAssets/
+* app/src/main/java/app/build/incremental/mergeAssets/debug/
+* app/src/main/java/app/build/incremental/mergeAssets/debug/merger.xml
+* app/src/main/java/app/build/incremental/mergeResources/
+* app/src/main/java/app/build/incremental/mergeResources/debug/
+* app/src/main/java/app/build/incremental/mergeResources/debug/merger.xml
+* app/src/main/java/app/build/libs/
+* app/src/main/java/app/build/libs/app-debug.ap_
+* app/src/main/java/app/build/libs/app-debug.dex
+* app/src/main/java/app/build/manifests/
+* app/src/main/java/app/build/manifests/debug/
+* app/src/main/java/app/build/manifests/debug/AndroidManifest.xml
+* app/src/main/java/app/build/res/
+* app/src/main/java/app/build/res/all/
+* app/src/main/java/app/build/res/all/debug/
+* app/src/main/java/app/build/res/all/debug/drawable-hdpi/
+* app/src/main/java/app/build/res/all/debug/drawable-hdpi/ic_launcher.png
+* app/src/main/java/app/build/res/all/debug/drawable-ldpi/
+* app/src/main/java/app/build/res/all/debug/drawable-ldpi/ic_launcher.png
+* app/src/main/java/app/build/res/all/debug/drawable-mdpi/
+* app/src/main/java/app/build/res/all/debug/drawable-mdpi/ic_launcher.png
+* app/src/main/java/app/build/res/all/debug/drawable-xhdpi/
+* app/src/main/java/app/build/res/all/debug/drawable-xhdpi/ic_launcher.png
+* app/src/main/java/app/build/res/all/debug/layout/
+* app/src/main/java/app/build/res/all/debug/layout/activity_one.xml
+* app/src/main/java/app/build/res/all/debug/layout/activity_two.xml
+* app/src/main/java/app/build/res/all/debug/values-v11/
+* app/src/main/java/app/build/res/all/debug/values-v11/values.xml
+* app/src/main/java/app/build/res/all/debug/values-v14/
+* app/src/main/java/app/build/res/all/debug/values-v14/values.xml
+* app/src/main/java/app/build/res/all/debug/values/
+* app/src/main/java/app/build/res/all/debug/values/values.xml
+* app/src/main/java/app/build/source/
+* app/src/main/java/app/build/source/buildConfig/
+* app/src/main/java/app/build/source/buildConfig/debug/
+* app/src/main/java/app/build/source/buildConfig/debug/course/
+* app/src/main/java/app/build/source/buildConfig/debug/course/labs/
+* app/src/main/java/app/build/source/buildConfig/debug/course/labs/activitylab/
+* app/src/main/java/app/build/source/buildConfig/debug/course/labs/activitylab/BuildConfig.java
+* app/src/main/java/app/build/source/r/
+* app/src/main/java/app/build/source/r/debug/
+* app/src/main/java/app/build/source/r/debug/course/
+* app/src/main/java/app/build/source/r/debug/course/labs/
+* app/src/main/java/app/build/source/r/debug/course/labs/activitylab/
+* app/src/main/java/app/build/source/r/debug/course/labs/activitylab/R.java
+* app/src/main/java/app/src/
+* app/src/main/java/app/src/main/
+* app/src/main/java/app/src/main/AndroidManifest.xml
+* app/src/main/java/app/src/main/java/
+* app/src/main/java/app/src/main/java/course/
+* app/src/main/java/app/src/main/java/course/labs/
+* app/src/main/java/app/src/main/java/course/labs/activitylab/
+* app/src/main/java/app/src/main/java/course/labs/activitylab/ActivityOne.java
+* app/src/main/java/app/src/main/java/course/labs/activitylab/ActivityTwo.java
+* app/src/main/java/app/src/main/res/
+* app/src/main/java/app/src/main/res/drawable-hdpi/
+* app/src/main/java/app/src/main/res/drawable-hdpi/ic_launcher.png
+* app/src/main/java/app/src/main/res/drawable-ldpi/
+* app/src/main/java/app/src/main/res/drawable-ldpi/ic_launcher.png
+* app/src/main/java/app/src/main/res/drawable-mdpi/
+* app/src/main/java/app/src/main/res/drawable-mdpi/ic_launcher.png
+* app/src/main/java/app/src/main/res/drawable-xhdpi/
+* app/src/main/java/app/src/main/res/drawable-xhdpi/ic_launcher.png
+* app/src/main/java/app/src/main/res/layout/
+* app/src/main/java/app/src/main/res/layout/activity_one.xml
+* app/src/main/java/app/src/main/res/layout/activity_two.xml
+* app/src/main/java/app/src/main/res/values-v11/
+* app/src/main/java/app/src/main/res/values-v11/styles.xml
+* app/src/main/java/app/src/main/res/values-v14/
+* app/src/main/java/app/src/main/res/values-v14/styles.xml
+* app/src/main/java/app/src/main/res/values/
+* app/src/main/java/app/src/main/res/values/strings.xml
+* app/src/main/java/app/src/main/res/values/styles.xml
+* app/src/main/java/build.gradle
+* app/src/main/java/course/
+* app/src/main/java/course/.DS_Store
+* app/src/main/java/course/labs/
+* app/src/main/java/course/labs/.DS_Store
+* app/src/main/java/course/labs/activitylab/
+* app/src/main/java/course/labs/activitylab/.DS_Store
+* app/src/main/java/course/labs/activitylab/test/
+* app/src/main/java/course/labs/activitylab/test/Test1.java
+* app/src/main/java/course/labs/activitylab/test/Test2.java
+* app/src/main/java/course/labs/activitylab/test/Test3.java
+* app/src/main/java/gradle/
+* app/src/main/java/gradle/wrapper/
+* app/src/main/java/gradle/wrapper/gradle-wrapper.jar
+* app/src/main/java/gradle/wrapper/gradle-wrapper.properties
+* app/src/main/java/gradlew
+* app/src/main/java/gradlew.bat
+* app/src/main/java/import-summary.txt
+* app/src/main/java/local.properties
+* app/src/main/java/settings.gradle
+* app/src/main/res/
+* app/src/main/res/.gitkeep
+* build.gradle
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+robotium-solo-5.0.1.jar => com.jayway.android.robotium:robotium-solo:5.0.1
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+robotium-solo-5.0.1.jar => version 5.0.1 in com.jayway.android.robotium:robotium-solo:5.0.1
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* /home/maxim/projects/coursera/android/AndroidLabs/week2/ActivityLab/ => app/src/main/java/
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
