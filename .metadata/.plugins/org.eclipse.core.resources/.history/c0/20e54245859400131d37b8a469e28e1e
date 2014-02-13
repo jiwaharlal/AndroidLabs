@@ -69,7 +69,7 @@ public class ActivityLoaderActivity extends Activity {
 		Intent intent = new Intent( ActivityLoaderActivity.this, ExplicitlyLoadedActivity.class );
 		
 		// TODO - Start an Activity using that intent and the request code defined above
-		startActivityForResult()
+
 
 	}
 
