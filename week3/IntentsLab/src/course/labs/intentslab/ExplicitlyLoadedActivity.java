@@ -12,6 +12,8 @@ import android.widget.EditText;
 public class ExplicitlyLoadedActivity extends Activity {
 
 	static private final String TAG = "Lab-Intents";
+	
+	static public final String resultTextCode = "resultText";
 
 	private EditText mEditText;
 	
@@ -47,12 +49,17 @@ public class ExplicitlyLoadedActivity extends Activity {
 		Log.i(TAG,"Entered enterClicked()");
 		
 		// TODO - Save user provided input from the EditText field
+		String text = mEditText.getText().toString();
 
 		// TODO - Create a new intent and save the input from the EditText field as an extra
+		Bundle resultBundle = new Bundle();
+		resultBundle.putString(resultTextCode, text);
+		getIntent().putExtras(resultBundle);
 		
 		// TODO - Set Activity's result with result code RESULT_OK
+		this.setResult(RESULT_OK, getIntent());
 		
 		// TODO - Finish the Activity
-
+		this.finish();
 	}
 }
