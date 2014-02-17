@@ -3,4 +3,6 @@
 <fullyQualifiedTypeName name="course.labs.fragmentslab.R.id"/>
 <fullyQualifiedTypeName name="android.app.FragmentManager"/>
 <fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
+<fullyQualifiedTypeName name="course.labs.todomanager.R.layout"/>
+<fullyQualifiedTypeName name="course.labs.todomanager.R.id"/>
 </qualifiedTypeNameHistroy>
