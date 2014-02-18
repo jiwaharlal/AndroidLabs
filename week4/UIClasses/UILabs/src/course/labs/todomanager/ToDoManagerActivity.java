@@ -29,6 +29,7 @@ public class ToDoManagerActivity extends ListActivity {
 
 	// Add a ToDoItem Request Code
 	private static final int ADD_TODO_ITEM_REQUEST = 0;
+	private static final int RESULT_CODE = 1;
 
 	private static final String FILE_NAME = "TodoManagerActivityData.txt";
 	private static final String TAG = "Lab-UserInterface";
@@ -71,7 +72,8 @@ public class ToDoManagerActivity extends ListActivity {
 				log("Entered footerView.OnClickListener.onClick()");
 
 				//TODO - Attach Listener to FooterView. Implement onClick().
-
+				Intent toDoIntent = new Intent( ToDoManagerActivity.this, AddToDoActivity.class );
+				startActivityForResult( toDoIntent, RESULT_CODE );
 			}
 		});
 

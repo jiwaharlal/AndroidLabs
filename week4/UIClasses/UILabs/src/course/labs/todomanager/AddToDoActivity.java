@@ -93,10 +93,10 @@ public class AddToDoActivity extends Activity {
 				log("Entered cancelButton.OnClickListener.onClick()");
 
 				//TODO - Implement onClick().  
-
+				cancelButtonClicked();
 			}
 		});
-
+		
 		//OnClickListener for the Reset Button
 
 		final Button resetButton = (Button) findViewById(R.id.resetButton);
@@ -106,11 +106,11 @@ public class AddToDoActivity extends Activity {
 				log("Entered resetButton.OnClickListener.onClick()");
 
 				//TODO - Reset data fields to default values
-				
-
-			
-			
-			
+				mTitleText.setText("");
+//				mTitleText.setHint(R.string.enter_title_string);
+				mStatusRadioGroup.check(R.id.statusNotDone);
+				mPriorityRadioGroup.check(R.id.medPriority);
+				setDefaultDateTime();
 			}
 		});
 
@@ -127,12 +127,31 @@ public class AddToDoActivity extends Activity {
 				
 				//TODO - Get Priority
 				Priority priority = null;
+				int priorityButtonId = mPriorityRadioGroup.getCheckedRadioButtonId();
+				switch ( priorityButtonId ) {
+				case R.id.lowPriority:
+					priority = Priority.LOW;
+					break;
+				case R.id.medPriority:
+					priority = Priority.MED;
+					break;
+				case R.id.highPriority:
+					priority = Priority.HIGH;
+					break;
+				default:
+					break;
+				}
 
 				//TODO -  Get Status
 				Status status = null;
+				if ( mStatusRadioGroup.getCheckedRadioButtonId() == R.id.statusDone ) {
+					status = Status.DONE;
+				} else {
+					status = Status.NOTDONE;
+				}
 
 				//TODO -  Title
-				String titleString = null;
+				String titleString = mTitleText.getText().toString();
 
 				// Date
 				String fullDate = dateString + " " + timeString;
@@ -142,13 +161,20 @@ public class AddToDoActivity extends Activity {
 				ToDoItem.packageIntent(data, titleString, priority, status, fullDate);
 
 				//TODO - return data Intent and finish
-				
+				setResult(RESULT_OK, data);
 
-				
-				
+				finish();
 			}
 		});
 	}
+	
+	private void cancelButtonClicked() {
+		this.setResult(RESULT_CANCELED, getIntent());
+		this.finish();
+	}
+	
+/*	private void resetButtonClicked() {
+	}*/
 
 	// Do not modify below here
 	
