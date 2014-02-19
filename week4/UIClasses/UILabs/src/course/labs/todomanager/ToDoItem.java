@@ -41,6 +41,15 @@ public class ToDoItem {
 		this.mStatus = status;
 		this.mDate = date;
 	}
+	
+	public static String priorityToString( Priority priority ) {
+		if ( priority == ToDoItem.Priority.HIGH ) {
+			return "High";
+		} else if ( priority == ToDoItem.Priority.MED ) {
+			return "Medium";
+		}
+        return "Low";
+	}
 
 	// Create a new ToDoItem from data packaged in an Intent
 
