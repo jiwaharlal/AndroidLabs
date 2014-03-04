@@ -13,7 +13,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.media.AudioManager;
+//import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -88,14 +90,21 @@ public class BubbleActivity extends Activity {
 				/ mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
 		// TODO - make a new SoundPool, allowing up to 10 streams 
-		mSoundPool = null;
+		mSoundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
 		// TODO - set a SoundPool OnLoadCompletedListener that calls setupGestureDetector()
+		mSoundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+			@Override
+			public void onLoadComplete(SoundPool soundPool, int sampleId,
+					int status) {
+				if (0 == status) {
+					setupGestureDetector();
+				}
+			}
+		});
 
-		
 		// TODO - load the sound from res/raw/bubble_pop.wav
-		mSoundID = 0;
-
+		mSoundID = mSoundPool.load( BubbleActivity.this, R.raw.bubble_pop, 1 );
 	}
 
 	@Override
@@ -113,23 +122,16 @@ public class BubbleActivity extends Activity {
 	// Set up GestureDetector
 	private void setupGestureDetector() {
 
-		mGestureDetector = new GestureDetector(this,
-
-		new GestureDetector.SimpleOnGestureListener() {
+		mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
 
 			// If a fling gesture starts on a BubbleView then change the
 			// BubbleView's velocity
 
 			@Override
-			public boolean onFling(MotionEvent event1, MotionEvent event2,
-					float velocityX, float velocityY) {
-
+			public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY) {
 				// TODO - Implement onFling actions.
 				// You can get all Views in mFrame using the
 				// ViewGroup.getChildCount() method
-
-				
-				
 				
 				return false;
 				
@@ -141,21 +143,9 @@ public class BubbleActivity extends Activity {
 
 			@Override
 			public boolean onSingleTapConfirmed(MotionEvent event) {
-
 				// TODO - Implement onSingleTapConfirmed actions.
 				// You can get all Views in mFrame using the
 				// ViewGroup.getChildCount() method
-
-
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				return false;
 			}
