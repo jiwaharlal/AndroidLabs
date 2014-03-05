@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 public class BubbleActivity extends Activity {
@@ -61,6 +62,8 @@ public class BubbleActivity extends Activity {
 
 	// Gesture Detector
 	private GestureDetector mGestureDetector;
+	
+	private Context mContext;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class BubbleActivity extends Activity {
 		// Load basic bubble Bitmap
 		mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.b64);
 
+		mContext = BubbleActivity.this;
 	}
 
 	@Override
@@ -132,6 +136,19 @@ public class BubbleActivity extends Activity {
 				// TODO - Implement onFling actions.
 				// You can get all Views in mFrame using the
 				// ViewGroup.getChildCount() method
+				ViewGroup viewGroup = (ViewGroup) findViewById(R.layout.main);
+				boolean isInBubble = false;
+				for ( int i = 0, viewCount = viewGroup.getChildCount(); i < viewCount; ++i ) {
+					View view = viewGroup.getChildAt( i );
+					if ( ! (view instanceof BubbleView ) ) {
+						continue;
+					}
+					BubbleView bubble = (BubbleView) view;
+					if ( bubble.intersects( event1.getX(), event1.getY() ) ) {
+						isInBubble = true;
+						break;
+					}
+				}
 				
 				return false;
 				
@@ -146,6 +163,29 @@ public class BubbleActivity extends Activity {
 				// TODO - Implement onSingleTapConfirmed actions.
 				// You can get all Views in mFrame using the
 				// ViewGroup.getChildCount() method
+				ViewGroup viewGroup = (ViewGroup) findViewById(R.layout.main);
+				boolean isInBubble = false;
+				boolean isViewGroup = viewGroup instanceof ViewGroup;
+				int viewCount = viewGroup.getChildCount();
+				for ( int i = 0; i < viewCount; ++i ) {
+					View view = viewGroup.getChildAt( i );
+					if ( ! (view instanceof BubbleView ) ) {
+						continue;
+					}
+					BubbleView bubble = (BubbleView) view;
+					if ( bubble.intersects( event.getX(), event.getY() ) ) {
+						isInBubble = true;
+						break;
+					}
+				}
+				
+				if ( isInBubble ) {
+					
+				} else {
+					float x = event.getX();
+					float y = event.getY();
+					viewGroup.addView(new BubbleView(mContext, event.getX(), event.getY() ) );
+				}
 				
 				return false;
 			}
@@ -156,14 +196,7 @@ public class BubbleActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 
 		// TODO - delegate the touch to the gestureDetector 
-
-		
-		
-		
-		
-		
-		
-		return false;
+		return mGestureDetector.onTouchEvent(event);
 	
 	}
 
@@ -322,6 +355,7 @@ public class BubbleActivity extends Activity {
 		private synchronized boolean intersects(float x, float y) {
 
 			// TODO - Return true if the BubbleView intersects position (x,y)
+
 
 			return false;
 		}
