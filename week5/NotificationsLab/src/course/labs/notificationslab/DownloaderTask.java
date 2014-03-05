@@ -202,13 +202,22 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 							// android.R.drawable.stat_sys_warning
 							// for the small icon. You should also setAutoCancel(true). 
 
-							Notification.Builder notificationBuilder = new Notification.Builder(mApplicationContext);
-							notificationBuilder.setAutoCancel(true);
-							notificationBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
+//							Notification.Builder notificationBuilder = new Notification.Builder(mApplicationContext);
+//							notificationBuilder.setAutoCancel(true);
+//							notificationBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
 
+							Notification noti = new Notification.Builder(mApplicationContext)
+                                                         .setContentTitle("Notification title")
+                                                         .setContentText("Twits downloaded")
+                                                         .setSmallIcon(android.R.drawable.stat_sys_warning)
+                                                         .setContentIntent(pendingIntent)
+                                                         .build();
 							// TODO: Send the notification
+							NotificationManager notificationManager =
+								    (NotificationManager) mApplicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
 							
+							notificationManager.notify( MY_NOTIFICATION_ID, noti );
 							
 							log("Notification Area Notification sent");
 						}

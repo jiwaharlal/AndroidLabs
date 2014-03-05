@@ -50,7 +50,7 @@ public class NewFeedTest extends
 		solo.sleep(shortDelay);
 
 		// Click on taylorswift13
-		solo.clickOnView(solo.getView(android.R.id.text1));
+		solo.clickOnView(solo.getView(android.R.id.text1, 0));
 
 		// Assert that: 'feed_view' is shown
 		assertTrue("feed_view not shown!", solo.waitForView(solo

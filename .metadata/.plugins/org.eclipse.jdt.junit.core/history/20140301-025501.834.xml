@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NotificationsLabTest" project="NotificationsLabTest" tests="3" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="nexus4 [emulator-5554]" incomplete="true">
+    <testsuite name="course.labs.notificationslab.test.NewFeedTest" time="19.106">
+      <testcase name="testRun " classname="course.labs.notificationslab.test.NewFeedTest" time="19.106">
+        <error>Test failed to run to completion. Reason: 'Instrumentation run failed due to 'java.lang.IllegalArgumentException''. Check device logcat for details
+</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="course.labs.notificationslab.test.OldFeedNoNotificationTest" incomplete="true">
+      <testcase name="testRun " classname="course.labs.notificationslab.test.OldFeedNoNotificationTest" incomplete="true"/>
+    </testsuite>
+    <testsuite name="course.labs.notificationslab.test.OldFeedWithNotificationTest" incomplete="true">
+      <testcase name="testRun " classname="course.labs.notificationslab.test.OldFeedWithNotificationTest" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+</testrun>
