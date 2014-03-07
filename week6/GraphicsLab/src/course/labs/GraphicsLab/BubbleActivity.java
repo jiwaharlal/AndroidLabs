@@ -163,12 +163,12 @@ public class BubbleActivity extends Activity {
 				// TODO - Implement onSingleTapConfirmed actions.
 				// You can get all Views in mFrame using the
 				// ViewGroup.getChildCount() method
-				ViewGroup viewGroup = (ViewGroup) findViewById(R.layout.main);
+//				ViewGroup viewGroup = (ViewGroup) findViewById(R.layout.main);
 				boolean isInBubble = false;
-				boolean isViewGroup = viewGroup instanceof ViewGroup;
-				int viewCount = viewGroup.getChildCount();
+//				boolean isViewGroup = viewGroup instanceof ViewGroup;
+				int viewCount = mFrame.getChildCount();
 				for ( int i = 0; i < viewCount; ++i ) {
-					View view = viewGroup.getChildAt( i );
+					View view = mFrame.getChildAt( i );
 					if ( ! (view instanceof BubbleView ) ) {
 						continue;
 					}
@@ -184,7 +184,7 @@ public class BubbleActivity extends Activity {
 				} else {
 					float x = event.getX();
 					float y = event.getY();
-					viewGroup.addView(new BubbleView(mContext, event.getX(), event.getY() ) );
+					mFrame.addView(new BubbleView(mContext, event.getX(), event.getY() ) );
 				}
 				
 				return false;
@@ -263,7 +263,7 @@ public class BubbleActivity extends Activity {
 			if (speedMode == RANDOM) {
 				
 				// TODO - set rotation in range [1..3]
-				mDRotate = 0;
+				mDRotate = (r.nextInt() % 3) + 1;
 
 				
 			} else {
@@ -298,12 +298,8 @@ public class BubbleActivity extends Activity {
 				// Limit movement speed in the x and y
 				// direction to [-3..3].
 
-
-			
-			
-			
-			
-			
+				mDx = r.nextInt(7) - 3;
+				mDy = r.nextInt(7) - 3;
 			}
 		}
 
@@ -316,20 +312,19 @@ public class BubbleActivity extends Activity {
 			} else {
 			
 				//TODO - set scaled bitmap size in range [1..3] * BITMAP_SIZE
-				mScaledBitmapWidth = 0;
-			
+				mScaledBitmapWidth = (r.nextInt(3) + 1) * BITMAP_SIZE;
 			}
 
 			// TODO - create the scaled bitmap using size set above
-			mScaledBitmap = null;
+			Bitmap bmp = BitmapFactory.decodeResource( getResources(), R.raw.bubble_pop );
+			mScaledBitmap = Bitmap.createScaledBitmap( bmp, mScaledBitmapWidth, mScaledBitmapWidth, false );
 		}
 
 		// Start moving the BubbleView & updating the display
 		private void start() {
 
 			// Creates a WorkerThread
-			ScheduledExecutorService executor = Executors
-					.newScheduledThreadPool(1);
+			ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
 			// Execute the run() in Worker Thread every REFRESH_RATE
 			// milliseconds
