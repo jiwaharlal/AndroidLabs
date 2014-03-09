@@ -5,14 +5,16 @@ INDEX VERSION 1.126+/home/maxim/projects/coursera/android/AndroidLabs/.metadata/
 2547088650.index
 3906671151.index
 1826052803.index
+2585067064.index
+2727758998.index
 623006088.index
 2615306295.index
 2723911742.index
 1403219930.index
 3017627511.index
+1522708285.index
 4035919995.index
 2871614022.index
-1522708285.index
 1838657425.index
 3030745704.index
 1357870798.index

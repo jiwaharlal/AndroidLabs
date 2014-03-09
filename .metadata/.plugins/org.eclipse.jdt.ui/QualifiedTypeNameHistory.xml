@@ -6,4 +6,6 @@
 <fullyQualifiedTypeName name="course.labs.todomanager.R.layout"/>
 <fullyQualifiedTypeName name="course.labs.todomanager.R.id"/>
 <fullyQualifiedTypeName name="course.labs.GraphicsLab.R.raw"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="course.labs.GraphicsLab.BubbleActivity.BubbleView"/>
 </qualifiedTypeNameHistroy>

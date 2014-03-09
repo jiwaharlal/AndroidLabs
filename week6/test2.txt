@@ -1,0 +1,1 @@
+03-08 19:13:29.566: I/Lab-Graphics(1078): Creating Bubble at: x:500.0 y:500.0
