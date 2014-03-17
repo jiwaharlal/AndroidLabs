@@ -8,4 +8,8 @@
 <fullyQualifiedTypeName name="course.labs.GraphicsLab.R.raw"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="course.labs.GraphicsLab.BubbleActivity.BubbleView"/>
+<fullyQualifiedTypeName name="android.widget.ListAdapter"/>
+<fullyQualifiedTypeName name="course.labs.locationlab.R.layout"/>
+<fullyQualifiedTypeName name="android.location.GpsStatus.Listener"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
 </qualifiedTypeNameHistroy>

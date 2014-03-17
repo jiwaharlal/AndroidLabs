@@ -80,82 +80,82 @@ public class WikiNotes extends Activity {
 
     @Override
     public void onCreate(Bundle icicle) {
-	super.onCreate(icicle);
-	setContentView(R.layout.main);
+                super.onCreate(icicle);
+                setContentView(R.layout.main);
 
-	mNoteView = (TextView) findViewById(R.id.noteview);
+                mNoteView = (TextView) findViewById(R.id.noteview);
 
-	// get the URL we are being asked to view
-	Uri uri = getIntent().getData();
+                // get the URL we are being asked to view
+                Uri uri = getIntent().getData();
 
-	if ((uri == null) && (icicle != null)) {
-	    // perhaps we have the URI in the icicle instead?
-	    uri = Uri.parse(icicle.getString(KEY_URL));
-	}
+                if ((uri == null) && (icicle != null)) {
+                    // perhaps we have the URI in the icicle instead?
+                    uri = Uri.parse(icicle.getString(KEY_URL));
+                }
 
-	// do we have a correct URI including the note name?
-	if ((uri == null) || (uri.getPathSegments().size() < 2)) {
-	    // if not, build one using the default StartPage name
-	    uri = Uri.withAppendedPath(WikiNote.Notes.ALL_NOTES_URI,
-				       getResources()
-					   .getString(R.string.start_page));
-	}
+                // do we have a correct URI including the note name?
+                if ((uri == null) || (uri.getPathSegments().size() < 2)) {
+                    // if not, build one using the default StartPage name
+                    uri = Uri.withAppendedPath(WikiNote.Notes.ALL_NOTES_URI,
+                                               getResources()
+                                                   .getString(R.string.start_page));
+                }
 
-	// can we find a matching note?
-	Cursor cursor = managedQuery(uri, WikiNote.WIKI_NOTES_PROJECTION,
-				     null, null, null);
+                // can we find a matching note?
+                Cursor cursor = managedQuery(uri, WikiNote.WIKI_NOTES_PROJECTION,
+                                             null, null, null);
 
-	boolean newNote = false;
-	if ((cursor == null) || (cursor.getCount() == 0)) {
-	    // no matching wikinote, so create it
-	    uri = getContentResolver().insert(uri, null);
-	    if (uri == null) {
-		Log.e(TAG, "Failed to insert new wikinote into " +
-				   getIntent().getData());
-		finish();
-		return;
-	    }
-	    // make sure that the new note was created successfully, and
-	    // select
-	    // it
-	    cursor = managedQuery(uri, WikiNote.WIKI_NOTES_PROJECTION, null,
-				  null, null);
-	    if ((cursor == null) || (cursor.getCount() == 0)) {
-		Log.e(TAG, "Failed to open new wikinote: " +
-				   getIntent().getData());
-		finish();
-		return;
-	    }
-	    newNote = true;
-	}
+                boolean newNote = false;
+                if ((cursor == null) || (cursor.getCount() == 0)) {
+                    // no matching wikinote, so create it
+                    uri = getContentResolver().insert(uri, null);
+                    if (uri == null) {
+                        Log.e(TAG, "Failed to insert new wikinote into " +
+                                           getIntent().getData());
+                        finish();
+                        return;
+                    }
+                    // make sure that the new note was created successfully, and
+                    // select
+                    // it
+                    cursor = managedQuery(uri, WikiNote.WIKI_NOTES_PROJECTION, null,
+                                          null, null);
+                    if ((cursor == null) || (cursor.getCount() == 0)) {
+                        Log.e(TAG, "Failed to open new wikinote: " +
+                                           getIntent().getData());
+                        finish();
+                        return;
+                    }
+                    newNote = true;
+                }
 
-	mURI = uri;
-	mCursor = cursor;
-	cursor.moveToFirst();
-	mHelper = new WikiActivityHelper(this);
+                mURI = uri;
+                mCursor = cursor;
+                cursor.moveToFirst();
+                mHelper = new WikiActivityHelper(this);
 
-	// get the note name
-	String noteName = cursor.getString(cursor
-	    .getColumnIndexOrThrow(WikiNote.Notes.TITLE));
-	mNoteName = noteName;
+                // get the note name
+                String noteName = cursor.getString(cursor
+                    .getColumnIndexOrThrow(WikiNote.Notes.TITLE));
+                mNoteName = noteName;
 
-	// set the title to the name of the page
-	setTitle(getResources().getString(R.string.wiki_title, noteName));
+                // set the title to the name of the page
+                setTitle(getResources().getString(R.string.wiki_title, noteName));
 
-	// If a new note was created, jump straight into editing it
-	if (newNote) {
-	    mHelper.editNote(noteName, null);
-	} else if (!getSharedPreferences(Eula.PREFERENCES_EULA,
-					 Activity.MODE_PRIVATE)
-	    .getBoolean(Eula.PREFERENCE_EULA_ACCEPTED, false)) {
-	    Eula.showEula(this);
-	}
+                // If a new note was created, jump straight into editing it
+                if (newNote) {
+                    mHelper.editNote(noteName, null);
+                } else if (!getSharedPreferences(Eula.PREFERENCES_EULA,
+                                                 Activity.MODE_PRIVATE)
+                    .getBoolean(Eula.PREFERENCE_EULA_ACCEPTED, false)) {
+                    Eula.showEula(this);
+                }
 
-	// Set the menu shortcut keys to be default keys for the activity as
-	// well
-	setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
-	
-	Log.i(TAG, "Exiting onCreate()");
+                // Set the menu shortcut keys to be default keys for the activity as
+                // well
+                setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
+                
+                Log.i(TAG, "Exiting onCreate()");
     }
 
     @Override

@@ -55,49 +55,49 @@ public class WikiNotesList extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
+                super.onCreate(savedInstanceState);
 
-	Intent intent = getIntent();
-	Uri uri = null;
-	String query = null;
+                Intent intent = getIntent();
+                Uri uri = null;
+                String query = null;
 
-	// locate a query string; prefer a fresh search Intent over saved
-	// state
-	if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-	    query = intent.getStringExtra(SearchManager.QUERY);
-	} else if (savedInstanceState != null) {
-	    query = savedInstanceState.getString(SearchManager.QUERY);
-	}
-	if (query != null && query.length() > 0) {
-	    uri = Uri.withAppendedPath(WikiNote.Notes.SEARCH_URI, Uri
-		.encode(query));
-	}
+                // locate a query string; prefer a fresh search Intent over saved
+                // state
+                if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                    query = intent.getStringExtra(SearchManager.QUERY);
+                } else if (savedInstanceState != null) {
+                    query = savedInstanceState.getString(SearchManager.QUERY);
+                }
+                if (query != null && query.length() > 0) {
+                    uri = Uri.withAppendedPath(WikiNote.Notes.SEARCH_URI, Uri
+                        .encode(query));
+                }
 
-	if (uri == null) {
-	    // somehow we got called w/o a query so fall back to a reasonable
-	    // default (all notes)
-	    uri = WikiNote.Notes.ALL_NOTES_URI;
-	}
+                if (uri == null) {
+                    // somehow we got called w/o a query so fall back to a reasonable
+                    // default (all notes)
+                    uri = WikiNote.Notes.ALL_NOTES_URI;
+                }
 
-	// Do the query
-	Cursor c = managedQuery(uri, PROJECTION, null, null,
-				WikiNote.Notes.DEFAULT_SORT_ORDER);
-	mCursor = c;
+                // Do the query
+                Cursor c = managedQuery(uri, PROJECTION, null, null,
+                                        WikiNote.Notes.DEFAULT_SORT_ORDER);
+                mCursor = c;
 
-	mHelper = new WikiActivityHelper(this);
+                mHelper = new WikiActivityHelper(this);
 
-	// Bind the results of the search into the list
-	ListAdapter adapter = new SimpleCursorAdapter(
-						      this,
-						      android.R.layout.simple_list_item_1,
-						      mCursor,
-						      new String[] { WikiNote.Notes.TITLE },
-						      new int[] { android.R.id.text1 });
-	setListAdapter(adapter);
+                // Bind the results of the search into the list
+                ListAdapter adapter = new SimpleCursorAdapter(
+                                                              this,
+                                                              android.R.layout.simple_list_item_1,
+                                                              mCursor,
+                                                              new String[] { WikiNote.Notes.TITLE },
+                                                              new int[] { android.R.id.text1 });
+                setListAdapter(adapter);
 
-	// use the menu shortcut keys as default key bindings for the entire
-	// activity
-	setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
+                // use the menu shortcut keys as default key bindings for the entire
+                // activity
+                setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
     }
 
     /**
