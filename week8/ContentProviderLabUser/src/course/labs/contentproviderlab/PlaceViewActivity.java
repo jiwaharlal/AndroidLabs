@@ -47,6 +47,8 @@ public class PlaceViewActivity extends ListActivity implements
 
 	// A fake location provider used for testing
 	private MockLocationProvider mMockLocationProvider;
+	
+	private View mFooterView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +56,12 @@ public class PlaceViewActivity extends ListActivity implements
 
         // TODO - Set up the app's user interface
         // This class is a ListActivity, so it has its own ListView
- 
+		getListView().setFooterDividersEnabled( true );
 
         // TODO - add a footerView to the ListView
         // You can use footer_view.xml to define the footer
-
+		mFooterView = getLayoutInflater().inflate(R.layout.footer_view, null);
+		getListView().addFooterView(mFooterView);
 
         // TODO - When the footerView's onClick() method is called, it must issue the
         // following log call
@@ -79,6 +82,28 @@ public class PlaceViewActivity extends ListActivity implements
         // Issue the following log call:
         // log("Location data is not available");
 
+		mFooterView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+                log("Entered footerView.OnClickListener.onClick()");
+                
+                if ( mLastLocationReading == null ) {
+                	log("Location data is not available");
+                	return;
+                }
+
+                if ( ! mAdapter.intersects( mLastLocationReading ) ) {
+                	log("Starting Place Download");
+                	PlaceDownloaderTask task = new PlaceDownloaderTask( PlaceViewActivity.this );
+                	task.execute( mLastLocationReading );
+                } else {
+                	Toast.
+                		makeText(getApplicationContext(), "You already have this location badge", Toast.LENGTH_SHORT).
+                		show();
+                    log("You already have this location badge");
+                }
+			}
+		});
 
 		
 		
@@ -98,8 +123,7 @@ public class PlaceViewActivity extends ListActivity implements
 	protected void onResume() {
 		super.onResume();
 
-		mMockLocationProvider = new MockLocationProvider(
-				LocationManager.NETWORK_PROVIDER, this);
+		mMockLocationProvider = new MockLocationProvider( LocationManager.NETWORK_PROVIDER, this);
 
 		// TODO - Check NETWORK_PROVIDER for an existing location reading.
 		// Only keep this last reading if it is fresh - less than 5 minutes old.

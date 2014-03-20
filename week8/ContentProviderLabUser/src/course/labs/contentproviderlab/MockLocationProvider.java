@@ -18,10 +18,8 @@ public class MockLocationProvider {
 	public MockLocationProvider(String name, Context ctx) {
 		this.mProviderName = name;
 
-		mLocationManager = (LocationManager) ctx
-				.getSystemService(Context.LOCATION_SERVICE);
-		mLocationManager.addTestProvider(mProviderName, false, false, false,
-				false, true, true, true, 0, 5);
+		mLocationManager = (LocationManager) ctx.getSystemService(Context.LOCATION_SERVICE);
+		mLocationManager.addTestProvider(mProviderName, false, false, false, false, true, true, true, 0, 5);
 		mLocationManager.setTestProviderEnabled(mProviderName, true);
 	}
 
@@ -32,8 +30,7 @@ public class MockLocationProvider {
 		mockLocation.setLongitude(lon);
 		mockLocation.setAltitude(0);
 		mockLocation.setTime(System.currentTimeMillis());
-		mockLocation
-				.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
+		mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
 		mockLocation.setAccuracy(mockAccuracy);
 
 		mLocationManager.setTestProviderLocation(mProviderName, mockLocation);

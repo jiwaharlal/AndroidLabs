@@ -81,8 +81,7 @@ public class PlaceBadgeContentProvider extends ContentProvider {
 	}
 
 	@Override
-	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 

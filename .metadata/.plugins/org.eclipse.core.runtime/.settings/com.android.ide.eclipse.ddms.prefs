@@ -5,6 +5,6 @@ logcat.view.colsize.Level=22
 logcat.view.colsize.PID=54
 logcat.view.colsize.TID=54
 logcat.view.colsize.Tag=73
-logcat.view.colsize.Text=776
+logcat.view.colsize.Text=786
 logcat.view.colsize.Time=77
 logcat.view.filters.list=name\: 'IntentsLab', tag\: 'Lab-Intents', text\: '', pid\: '', app\: '', level\: 'verbose', name\: 'PermissionsLab', tag\: 'Lab-Permissions', text\: '', pid\: '', app\: '', level\: 'verbose', name\: 'FragmentsLab', tag\: 'Lab-Fragments', text\: '', pid\: '', app\: '', level\: 'verbose', name\: 'UserInterfaceLab', tag\: 'Lab-UserInterface', text\: '', pid\: '', app\: '', level\: 'verbose', name\: 'GraphicsLab', tag\: 'Lab-Graphics', text\: '', pid\: '', app\: '', level\: 'verbose', name\: 'Location Lab', tag\: 'Lab-Location', text\: '', pid\: '', app\: '', level\: 'verbose', 

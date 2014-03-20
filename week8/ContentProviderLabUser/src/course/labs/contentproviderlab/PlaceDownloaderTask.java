@@ -34,23 +34,20 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 	private static final boolean HAS_NETWORK = true;
 
 	// TODO - put your www.geonames.org account name here.
-	private static String USERNAME = "YOUR_USER_NAME";
+	private static String USERNAME = "max_bondarenko";
 
 	private HttpURLConnection mHttpUrl;
 	private WeakReference<PlaceViewActivity> mParent;
 	private static Bitmap mStubBitmap;
-	private static Location mockLoc1 = new Location(
-			LocationManager.NETWORK_PROVIDER);
-	private static Location mockLoc2 = new Location(
-			LocationManager.NETWORK_PROVIDER);
+	private static Location mockLoc1 = new Location( LocationManager.NETWORK_PROVIDER);
+	private static Location mockLoc2 = new Location( LocationManager.NETWORK_PROVIDER);
 
 	public PlaceDownloaderTask(PlaceViewActivity parent) {
 		super();
 		mParent = new WeakReference<PlaceViewActivity>(parent);
 
 		if (!HAS_NETWORK) {
-			mStubBitmap = BitmapFactory.decodeResource(parent.getResources(),
-					R.drawable.stub);
+			mStubBitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.stub);
 			mockLoc1.setLatitude(37.422);
 			mockLoc1.setLongitude(-122.084);
 			mockLoc2.setLatitude(38.996667);
@@ -107,8 +104,7 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 		try {
 			URL url = new URL(params[0]);
 			mHttpUrl = (HttpURLConnection) url.openConnection();
-			in = new BufferedReader(new InputStreamReader(
-					mHttpUrl.getInputStream()));
+			in = new BufferedReader(new InputStreamReader( mHttpUrl.getInputStream()));
 
 			StringBuffer sb = new StringBuffer("");
 			String line = "";
@@ -161,8 +157,7 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 			mHttpUrl.disconnect();
 		}
 
-		return BitmapFactory.decodeResource(mParent.get().getResources(),
-				R.drawable.stub);
+		return BitmapFactory.decodeResource(mParent.get().getResources(), R.drawable.stub);
 	}
 
 	private static PlaceRecord placeDataFromXml(String xmlString) {
@@ -175,8 +170,7 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 
 		try {
 			builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(
-					xmlString)));
+			Document document = builder.parse(new InputSource(new StringReader( xmlString)));
 			NodeList list = document.getDocumentElement().getChildNodes();
 			for (int i = 0; i < list.getLength(); i++) {
 				Node curr = list.item(i);
@@ -208,8 +202,7 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 			e.printStackTrace();
 		}
 
-		return new PlaceRecord(generateFlagURL(countryCode.toLowerCase()),
-				null, countryName, placeName, -1, -1);
+		return new PlaceRecord(generateFlagURL(countryCode.toLowerCase()), null, countryName, placeName, -1, -1);
 	}
 
 	private static String generateURL(String username, Location location) {
