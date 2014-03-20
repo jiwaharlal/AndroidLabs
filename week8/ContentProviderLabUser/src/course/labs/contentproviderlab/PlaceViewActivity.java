@@ -92,7 +92,7 @@ public class PlaceViewActivity extends ListActivity implements
                 	return;
                 }
 
-                if ( ! mAdapter.intersects( mLastLocationReading ) ) {
+                if ( ! mCursorAdapter.intersects( mLastLocationReading ) ) {
                 	log("Starting Place Download");
                 	PlaceDownloaderTask task = new PlaceDownloaderTask( PlaceViewActivity.this );
                 	task.execute( mLastLocationReading );
@@ -110,12 +110,13 @@ public class PlaceViewActivity extends ListActivity implements
 		
 		// TODO - Create and set empty PlaceViewAdapter
         // ListView's adapter should be a PlaceViewAdapter called mCursorAdapter
-
+		mCursorAdapter = new PlaceViewAdapter( this, null, 0 );
+		setListAdapter( mCursorAdapter );
 		
 		
 		
 		// TODO - Initialize a CursorLoader
-
+		getLoaderManager().initLoader(0, null, this);
         
 	}
 
@@ -128,15 +129,16 @@ public class PlaceViewActivity extends ListActivity implements
 		// TODO - Check NETWORK_PROVIDER for an existing location reading.
 		// Only keep this last reading if it is fresh - less than 5 minutes old.
 
-
-		
-		
+		mLocationManager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+		Location location = mLocationManager.getLastKnownLocation( LocationManager.NETWORK_PROVIDER );
+		if ( location != null && age( location ) < FIVE_MINS ) {
+			mLastLocationReading = location;
+		} else {
+			mFooterView.setEnabled( false );
+		}
 		
 		// TODO - Register to receive location updates from NETWORK_PROVIDER
-
-		
-		
-		
+		mLocationManager.requestLocationUpdates( LocationManager.NETWORK_PROVIDER, mMinTime, mMinDistance, this);
 	}
 
 	@Override
@@ -145,8 +147,7 @@ public class PlaceViewActivity extends ListActivity implements
 		mMockLocationProvider.shutdown();
 
 		// TODO - Unregister for location updates
-
-		
+		mLocationManager.removeUpdates( this );
 		
 		super.onPause();
 	}
@@ -170,10 +171,10 @@ public class PlaceViewActivity extends ListActivity implements
 		// 3) If the current location is newer than the last locations, keep the
 		// current location.
 
-
-	
-	
-	
+		if ( mLastLocationReading == null || age( currentLocation ) < age( mLastLocationReading ) ) {
+			mLastLocationReading = currentLocation;
+			mFooterView.setEnabled( true );
+		}
 	}
 
 	@Override
