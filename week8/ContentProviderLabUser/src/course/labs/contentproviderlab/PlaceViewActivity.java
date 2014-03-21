@@ -104,16 +104,11 @@ public class PlaceViewActivity extends ListActivity implements
                 }
 			}
 		});
-
-		
-		
 		
 		// TODO - Create and set empty PlaceViewAdapter
         // ListView's adapter should be a PlaceViewAdapter called mCursorAdapter
 		mCursorAdapter = new PlaceViewAdapter( this, null, 0 );
 		setListAdapter( mCursorAdapter );
-		
-		
 		
 		// TODO - Initialize a CursorLoader
 		getLoaderManager().initLoader(0, null, this);
@@ -197,16 +192,25 @@ public class PlaceViewActivity extends ListActivity implements
 		log("Entered onCreateLoader()");
 
 		// TODO - Create a new CursorLoader and return it
+
+		// String used to filter contacts with empty or missing names or are unstarred
+//		String select = PlaceBadgesContract.LAT + PlaceBadgesContract.LON + PlaceBadgesContract.CONTENT_URI;
 		
-        
-        return null;
+/*		String select = "((" + Contacts.DISPLAY_NAME + " NOTNULL) AND ("
+				+ Contacts.DISPLAY_NAME + " != '' ) AND (" + Contacts.STARRED
+				+ "== 1))";*/
+
+		// String used for defining the sort order
+//		String sortOrder = PlaceBadgesContract._ID + " ASC";
+
+		return new CursorLoader(this);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> newLoader, Cursor newCursor) {
 
 		// TODO - Swap in the newCursor
-
+		mCursorAdapter.swapCursor(newCursor);
 	
     }
 
@@ -214,7 +218,7 @@ public class PlaceViewActivity extends ListActivity implements
 	public void onLoaderReset(Loader<Cursor> newLoader) {
 
 		// TODO - Swap in a null Cursor
-
+		mCursorAdapter.swapCursor(null);
 	
     }
 
