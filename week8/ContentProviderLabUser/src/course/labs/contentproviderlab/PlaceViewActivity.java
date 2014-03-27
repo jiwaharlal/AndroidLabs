@@ -203,23 +203,19 @@ public class PlaceViewActivity extends ListActivity implements
 		// String used for defining the sort order
 //		String sortOrder = PlaceBadgesContract._ID + " ASC";
 
-		return new CursorLoader(this);
+		return new CursorLoader(this, PlaceBadgesContract.CONTENT_URI, null, null, null, null);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> newLoader, Cursor newCursor) {
-
 		// TODO - Swap in the newCursor
 		mCursorAdapter.swapCursor(newCursor);
-	
     }
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> newLoader) {
-
 		// TODO - Swap in a null Cursor
 		mCursorAdapter.swapCursor(null);
-	
     }
 
 	private long age(Location location) {

@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,12 +18,14 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import course.labs.contentproviderlab.provider.PlaceBadgesContract;
 
 public class PlaceViewAdapter extends CursorAdapter {
@@ -57,40 +61,31 @@ public class PlaceViewAdapter extends CursorAdapter {
 		super.swapCursor(newCursor);
 
 		if (null != newCursor) {
-
 			// TODO - clear the ArrayList list so it contains
             // the current set of PlaceRecords. Use the 
             // getPlaceRecordFromCursor() method to add the
             // current place to the list
 			list.clear();
-			list.add( getPlaceRecordFromCursor(newCursor) );
+			for ( newCursor.moveToFirst(); ! newCursor.isAfterLast(); newCursor.moveToNext() ) {
+                list.add( getPlaceRecordFromCursor(newCursor) );
+			}
 
             // Set the NotificationURI for the new cursor
 			newCursor.setNotificationUri(mContext.getContentResolver(), PlaceBadgesContract.CONTENT_URI);
-
 		}
 		return newCursor;
-
 	}
 
 	// returns a new PlaceRecord for the data at the cursor's
 	// current position
 	private PlaceRecord getPlaceRecordFromCursor(Cursor cursor) {
+		String flagBitmapPath = cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.FLAG_BITMAP_PATH));
+		String countryName = cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.COUNTRY_NAME));
+		String placeName = cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.PLACE_NAME));
+		double lat = cursor.getDouble(cursor.getColumnIndex(PlaceBadgesContract.LAT));
+		double lon = cursor.getDouble(cursor.getColumnIndex(PlaceBadgesContract.LON));
 
-		String flagBitmapPath = cursor.getString(cursor
-				.getColumnIndex(PlaceBadgesContract.FLAG_BITMAP_PATH));
-		String countryName = cursor.getString(cursor
-				.getColumnIndex(PlaceBadgesContract.COUNTRY_NAME));
-		String placeName = cursor.getString(cursor
-				.getColumnIndex(PlaceBadgesContract.PLACE_NAME));
-		double lat = cursor.getDouble(cursor
-				.getColumnIndex(PlaceBadgesContract.LAT));
-		double lon = cursor.getDouble(cursor
-				.getColumnIndex(PlaceBadgesContract.LON));
-
-		return new PlaceRecord(null, flagBitmapPath, countryName, placeName,
-				lat, lon);
-
+		return new PlaceRecord(null, flagBitmapPath, countryName, placeName, lat, lon);
 	}
 
 	public int getCount() {
@@ -106,11 +101,9 @@ public class PlaceViewAdapter extends CursorAdapter {
 	}
 
 	static class ViewHolder {
-
 		ImageView flag;
 		TextView country;
 		TextView place;
-
 	}
 
 	public boolean intersects(Location location) {
@@ -123,25 +116,32 @@ public class PlaceViewAdapter extends CursorAdapter {
 	}
 
 	public void add(PlaceRecord listItem) {
-
 		String lastPathSegment = Uri.parse(listItem.getFlagUrl()).getLastPathSegment();
 		String filePath = mBitmapStoragePath + "/" + lastPathSegment;
 
 		if (storeBitmapToFile(listItem.getFlagBitmap(), filePath)) {
-
 			listItem.setFlagBitmapPath(filePath);
 			list.add(listItem);
 
 			// TODO - Insert new record into the ContentProvider
+			ContentValues values = new ContentValues();
+			values.put(PlaceBadgesContract.FLAG_BITMAP_PATH, listItem.getFlagBitmapPath());
+			values.put(PlaceBadgesContract.COUNTRY_NAME, listItem.getCountryName());
+			values.put(PlaceBadgesContract.PLACE_NAME, listItem.getPlace());
+			values.put(PlaceBadgesContract.LAT, listItem.getLat());
+			values.put(PlaceBadgesContract.LON, listItem.getLon());
 
-			
-
-		
-        
-        
-        
+//			cr.insert(PlaceBadgesContract.CONTENT_URI, values);
+			ContentResolver cr = mContext.getContentResolver();
+//			ContentProviderClient cpClient = cr.acquireContentProviderClient(PlaceBadgesContract.CONTENT_URI);
+			Uri resultUri = cr.insert(PlaceBadgesContract.CONTENT_URI, values);
+			Log.i("tag", resultUri.toString() );
+//			try {
+//                cpClient.insert(PlaceBadgesContract.CONTENT_URI, values);
+//			} catch ( Throwable th ) {
+//				Log.i("ERROR", "Excepthin while inserting place" );
+//			}
         }
-
 	}
 
 	public ArrayList<PlaceRecord> getList() {
@@ -149,36 +149,31 @@ public class PlaceViewAdapter extends CursorAdapter {
 	}
 
 	public void removeAllViews() {
-
 		list.clear();
 
 		// TODO - delete all records in the ContentProvider
-
-
+        ContentResolver cr = mContext.getContentResolver();
         
-        
-        
+        ContentProviderClient client = cr.acquireContentProviderClient(PlaceBadgesContract.BASE_URI);
+        try {
+            int removedRecordsCount = client.delete(PlaceBadgesContract.CONTENT_URI, "", null );
+            Log.i("tag", "Removed " + new Integer(removedRecordsCount).toString() + " records.");
+        } catch ( Throwable th ) {
+        	
+        }
 	}
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-
 		ViewHolder holder = (ViewHolder) view.getTag();
 
-		holder.flag.setImageBitmap(getBitmapFromFile(cursor.getString(cursor
-				.getColumnIndex(PlaceBadgesContract.FLAG_BITMAP_PATH))));
-		holder.country.setText("Country: "
-				+ cursor.getString(cursor
-						.getColumnIndex(PlaceBadgesContract.COUNTRY_NAME)));
-		holder.place.setText("Place: "
-				+ cursor.getString(cursor
-						.getColumnIndex(PlaceBadgesContract.PLACE_NAME)));
-
+		holder.flag.setImageBitmap(getBitmapFromFile(cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.FLAG_BITMAP_PATH))));
+		holder.country.setText("Country: " + cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.COUNTRY_NAME)));
+		holder.place.setText("Place: " + cursor.getString(cursor.getColumnIndex(PlaceBadgesContract.PLACE_NAME)));
 	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-
 		View newView;
 		ViewHolder holder = new ViewHolder();
 
@@ -197,12 +192,8 @@ public class PlaceViewAdapter extends CursorAdapter {
 	}
 
 	private boolean storeBitmapToFile(Bitmap bitmap, String filePath) {
-
-		if (Environment.getExternalStorageState().equals(
-				Environment.MEDIA_MOUNTED)) {
-
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 			try {
-
 				BufferedOutputStream bos = new BufferedOutputStream(
 						new FileOutputStream(filePath));
 
@@ -210,7 +201,6 @@ public class PlaceViewAdapter extends CursorAdapter {
 
 				bos.flush();
 				bos.close();
-
 			} catch (FileNotFoundException e) {
 				return false;
 			} catch (IOException e) {

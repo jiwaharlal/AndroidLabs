@@ -1,0 +1,5 @@
+03-23 16:19:44.457: I/Lab-ContentProvider(1625): Entered onCreateLoader()
+03-23 16:19:54.017: I/Lab-ContentProvider(1625): Entered footerView.OnClickListener.onClick()
+03-23 16:19:54.127: I/Lab-ContentProvider(1625): Starting Place Download
+03-23 16:19:54.987: I/Lab-ContentProvider(1625): Entered addNewPlace()
+03-23 16:19:59.947: I/Lab-ContentProvider(1625): Place: The Greenhouse Country: United States
