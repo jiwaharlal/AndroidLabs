@@ -12,4 +12,10 @@
 <fullyQualifiedTypeName name="course.labs.locationlab.R.layout"/>
 <fullyQualifiedTypeName name="android.location.GpsStatus.Listener"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="android.content.ContentResolver"/>
+<fullyQualifiedTypeName name="android.content.ContentProviderClient"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.provider.MediaStore"/>
+<fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>
