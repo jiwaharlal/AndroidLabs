@@ -61,7 +61,10 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+<<<<<<< HEAD
 import android.provider.MediaStore;
+=======
+>>>>>>> week 8, iRemember
 import android.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
@@ -191,7 +194,14 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// using Environment.getExternalStorageState() before doing this.
 
 		// For future implementation: store videos in a separate directory
+<<<<<<< HEAD
 		File mediaStorageDir = new File( Environment.getExternalStorageDirectory(), "iRemember");
+=======
+		File mediaStorageDir = new File(
+				Environment
+						.getExternalStorageDirectory(),
+				"iRemember");
+>>>>>>> week 8, iRemember
 		// This location works best if you want the created images to be shared
 		// between applications and persist after your app has been uninstalled.
 
@@ -229,21 +239,35 @@ public class CreateStoryActivity extends StoryActivityBase {
 	private void launchSoundIntent() {
 		
 		// TODO - Create a new intent to launch the SoundRecordActivity activity
+<<<<<<< HEAD
 		Intent soundIntent = new Intent( this, SoundRecordActivity.class );
+=======
+>>>>>>> week 8, iRemember
 
 		
 		// TODO - Use getOutputMediaFile() to create a new 
 		// filename for this specific sound file
+<<<<<<< HEAD
 		File soundFile = getOutputMediaFile( MEDIA_TYPE_AUDIO );
 		
 		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
 		// from the SoundRecordActivity class, EXTRA_OUTPUT
 		soundIntent.putExtra( SoundRecordActivity.EXTRA_OUTPUT, soundFile.getAbsolutePath() );
+=======
+		
+		
+		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
+		// from the SoundRecordActivity class, EXTRA_OUTPUT
+>>>>>>> week 8, iRemember
 
 		
 		// TODO - Start a new activity for result, using the new intent and the request
 		// code MIC_SOUND_REQUEST
+<<<<<<< HEAD
 		this.startActivityForResult( soundIntent, MIC_SOUND_REQUEST );
+=======
+		
+>>>>>>> week 8, iRemember
 	}
 	
 	// This function creates a new Intent to launch the built-in Camera activity
@@ -253,6 +277,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// TODO - Create a new intent to launch the MediaStore, Image capture function
 		// Hint: use standard Intent from MediaStore class
 		// See: http://developer.android.com/reference/android/provider/MediaStore.html
+<<<<<<< HEAD
 		Intent imageIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
 		
 		// TODO - Set the imagePath for this image file using the pre-made function
@@ -266,6 +291,22 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// TODO - Start a new activity for result, using the new intent and the request
 		// code CAMERA_PIC_REQUEST
 		this.startActivityForResult( imageIntent, CAMERA_PIC_REQUEST );
+=======
+
+		
+		// TODO - Set the imagePath for this image file using the pre-made function
+		// getOutputMediaFile to create a new filename for this specific image;
+
+		
+		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
+		// from the MediaStore class, EXTRA_OUTPUT
+		
+		
+		// TODO - Start a new activity for result, using the new intent and the request
+		// code CAMERA_PIC_REQUEST
+		
+
+>>>>>>> week 8, iRemember
 	}
 
 	// This function creates a new Intent to launch the built-in Video Camera activity
@@ -274,6 +315,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// TODO - Create a new intent to launch the MediaStore, Image capture function
 		// Hint: use standard Intent from MediaStore class
 		// See: http://developer.android.com/reference/android/provider/MediaStore.html
+<<<<<<< HEAD
 		Intent videoIntent = new Intent( MediaStore.ACTION_VIDEO_CAPTURE );
 		
 		// TODO - Set the fileUri for this video file using the pre-made function
@@ -283,15 +325,38 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
 		// from the MediaStore class, EXTRA_OUTPUT
 		videoIntent.putExtra( MediaStore.EXTRA_OUTPUT, videoFile.getAbsolutePath() );
+=======
+
+		
+		// TODO - Set the fileUri for this video file using the pre-made function
+		// getOutputMediaFile to create a new filename for this specific video;
+		
+
+		
+		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
+		// from the MediaStore class, EXTRA_OUTPUT
+
+>>>>>>> week 8, iRemember
 		
 		// TODO - Specify as an extra that the video quality should be HIGH. Use the
 		// Intent-extra name, EXTRA_VIDEO_QUALITY, from the MediaStore class
 		// set the video image quality to high 
+<<<<<<< HEAD
 		videoIntent.putExtra( MediaStore.EXTRA_VIDEO_QUALITY, 1 );
 		
 		// TODO - Start a new activity for result, using the new intent and the request
 		// code CAMERA_VIDEO_REQUEST
 		this.startActivityForResult( videoIntent, CAMERA_VIDEO_REQUEST );
+=======
+		
+
+		
+		// TODO - Start a new activity for result, using the new intent and the request
+		// code CAMERA_VIDEO_REQUEST
+		
+
+	
+>>>>>>> week 8, iRemember
 	}
 
 }

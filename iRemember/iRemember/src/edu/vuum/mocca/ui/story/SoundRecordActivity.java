@@ -169,7 +169,11 @@ public class SoundRecordActivity extends Activity {
     // The Play button & its logic
     class PlayButton extends Button {
         boolean mStartPlaying = true;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> week 8, iRemember
         OnClickListener clicker = new OnClickListener() {
             public void onClick(View v) {
                 onPlay(mStartPlaying);

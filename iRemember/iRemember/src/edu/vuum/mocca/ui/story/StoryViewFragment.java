@@ -48,8 +48,11 @@ University of Maryland to appear in their names.
 
 package edu.vuum.mocca.ui.story;
 
+<<<<<<< HEAD
 import java.io.File;
 
+=======
+>>>>>>> week 8, iRemember
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -77,7 +80,12 @@ import edu.vuum.mocca.orm.StoryData;
 
 public class StoryViewFragment extends Fragment {
 
+<<<<<<< HEAD
 	private static final String LOG_TAG = StoryViewFragment.class.getCanonicalName();
+=======
+	private static final String LOG_TAG = StoryViewFragment.class
+			.getCanonicalName();
+>>>>>>> week 8, iRemember
 
 	private MoocResolver resolver;
 	public final static String rowIdentifyerTAG = "index";
@@ -227,7 +235,11 @@ public class StoryViewFragment extends Fragment {
 			// as a ringtone and play it back as such. Use the RingtonManager function getRingtone on
 			// the audioLinkPath to create the ringtone
 			
+<<<<<<< HEAD
 			final Ringtone ringtone = RingtoneManager.getRingtone( this.getActivity(), Uri.fromFile(new File(audioLinkPath)) );
+=======
+			final Ringtone ringtone = null;
+>>>>>>> week 8, iRemember
 			
 			
 			audioButton.setOnClickListener(new OnClickListener() {
@@ -235,7 +247,11 @@ public class StoryViewFragment extends Fragment {
 				public void onClick(View v) {
 					
 					// TODO - Play the ringtone
+<<<<<<< HEAD
 					ringtone.play();
+=======
+					
+>>>>>>> week 8, iRemember
 
 					
 				}
